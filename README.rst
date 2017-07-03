@@ -11,8 +11,8 @@ To :
 * Play with these examples, follow this `link <http://mybinder.org/repo/statiskit/fpd17>`_.
 * Update the **Binder** server, follow this `link <http://mybinder.org/status/statiskit/fpd17>`_ and click on :code:`rebuild`.
 
-Instal it !
------------
+Install it !
+------------
 
 You can also install locally all required packages to run these examples as follows:
 
