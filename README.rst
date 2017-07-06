@@ -71,4 +71,4 @@ Then, to install the required packages, proceed as as follows:
 
      jupyter notebook index.ipynb
      
-6. Execute this `index.ipynb` notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
+6. Execute this :code:`index.ipynb` notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
