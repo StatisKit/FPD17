@@ -8,7 +8,7 @@
 FPD17: Supplementary Material
 #############################
 
-This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing simulations and analyzes performed in the article *Multinomial Splitting Models for Multivariate Counts* written by:
+This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing simulations and analyzes performed in the article *unknown title* written by:
 
 * Pierre Fernique,
 * Jean Peyhardi,
