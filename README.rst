@@ -35,7 +35,7 @@ Install it !
 ============
 
 You can also install on your computer all required packages to reproduce these studies.
-In order to ease the installation of these packages on multiple operating systems, the **Conda** `package and environment management system <https://conda.io/docs/> `_ is used.
+In order to ease the installation of these packages on multiple operating systems, the **Conda** `package and environment management system <https://conda.io/docs/>`_ is used.
 For more information refers to the **StatisKit** software suite documentation concerning prerequisites to the `installation <http://statiskit.readthedocs.io/en/latest/user/install_it.html>`_.
 Then, to install the required packages, proceed as as follows:
 
