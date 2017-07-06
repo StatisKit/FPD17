@@ -1,5 +1,5 @@
-FPD17: Material for article reproducibility 
-===========================================
+FPD17: Material for reproducibility 
+===================================
 
 This repository contains examples, data, and a **Binder**-compatible environment specification file for reproducing simulations and analyses performed in the article *Multinomial Splitting Models for Multivariate Counts* written by P. Fernique, J. Peyhardi and J.-B. Durand.
 
