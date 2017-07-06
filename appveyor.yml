@@ -6,8 +6,12 @@ environment:
   matrix:
     - RECIPE: r-mglm
     - ENVIRONMENT: FPD17
-      NOTEBOOK: index.ipynb
-
+      NOTEBOOK: misc/simulation.ipynb
+    - ENVIRONMENT: FPD17
+      NOTEBOOK: misc/comparison.ipynb
+    - ENVIRONMENT: FPD17
+      NOTEBOOK: misc/application.ipynb
+      
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git appveyor-ci
   - cd appveyor-ci

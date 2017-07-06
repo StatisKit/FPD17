@@ -12,7 +12,11 @@ services:
 env:
   - RECIPE=r-mglm
   - ENVIRONMENT=FPD17
-    NOTEBOOK=index.ipynb
+    NOTEBOOK=misc/simulation.ipynb
+  - ENVIRONMENT=FPD17
+    NOTEBOOK=misc/comparison.ipynb
+  - ENVIRONMENT=FPD17
+    NOTEBOOK=misc/application.ipynb
   - DOCKERFILE=fpd17
 
 matrix:
