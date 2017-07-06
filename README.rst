@@ -1,20 +1,41 @@
 FPD17: Material for reproducibility 
-===================================
+###################################
 
-This repository contains examples, data, and a **Binder**-compatible environment specification file for reproducing simulations and analyses performed in the article *Multinomial Splitting Models for Multivariate Counts* written by P. Fernique, J. Peyhardi and J.-B. Durand.
+This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing simulations and analyzes performed in the article *Multinomial Splitting Models for Multivariate Counts* written by:
+
+* Pierre Fernique,
+* Jean Peyhardi,
+* Jean-Baptiste Durand.
 
 Test it !
----------
+=========
 
-To :
+Using **Docker** `images <http://docs.mybinder.org/>`_. or a **Binder** `server <https://docs.docker.com/>`_, we are able to provide ways to reproduce the article studies without installing the **StatisKit** software suite.
+    
+Online with **Binder**
+----------------------
 
-* Play with these examples, follow this `link <http://mybinder.org/repo/statiskit/fpd17>`_.
-* Update the **Binder** server, follow this `link <http://mybinder.org/status/statiskit/fpd17>`_ and click on :code:`rebuild`.
+To reproduce the studies online, follow this `link <http://mybinder.org/repo/statiskit/fpd17>`_.
+Note that the **Binder** server might be outdated but can be updated by following this `link <http://mybinder.org/status/statiskit/fpd17>`_ and clicking on :code:`rebuild`.
+
+On your computer with **Docker**
+--------------------------------
+
+To reproduce the studies with **Docker** use this `image <https://hub.docker.com/r/statiskit/FPF17/tags>`_.
+After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following commands in a shell:
+
+.. code-block:: console
+
+    docker run -i -t -p 8888:8888 statiskit/FPD17:latest
+    jupyter notebook index.ipynb --ip='*' --port=8888 --no-browser
+   
+You can then view the **Jupyter** notebooks by following this `link <http://localhost:8888/notebooks/index.ipynb>`_, or http://<DOCKER-MACHINE-IP>:8888/notebooks/index.ipynb if you are using a **Docker** Machine VM (see this `documentation <https://docs.docker.com/machine/>`_ for more informations).
 
 Install it !
-------------
+============
 
-You can also install locally all required packages to run these examples as follows:
+You can also install on your computer all required packages to reproduce these studies.
+To do so, proceed as as follows:
 
 1. Clone this repository,
 
@@ -42,4 +63,4 @@ You can also install locally all required packages to run these examples as foll
 
      jupyter notebook index.ipynb
      
-6. Execute this notebook to execute all examples or navigate among linked notebooks to execute them separatly.
+6. Execute this `index.ipynb` notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
