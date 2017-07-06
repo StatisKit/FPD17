@@ -5,10 +5,10 @@
    :target: https://ci.appveyor.com/api/projects/status/jbvyy4sko6bhorx2/branch/master
 
 
-FPD17: Supplementary Material
-#############################
+FPD17: Supplementary Material for computational studies 
+#######################################################
 
-This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing simulations and analyzes performed in the article *unknown title* written by:
+This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing computational studies performed in the article *unknown title* written by:
 
 * Pierre Fernique,
 * Jean Peyhardi,
