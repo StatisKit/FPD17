@@ -5,7 +5,7 @@
    :target: https://ci.appveyor.com/api/projects/status/jbvyy4sko6bhorx2/branch/master
 
 
-FPD17: Supplementary Material for computational studies 
+FPD17: Supplementary Material for Computational Studies 
 #######################################################
 
 This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing computational studies performed in the article *unknown title* written by:
