@@ -1,4 +1,4 @@
-FROM statiskit:ubuntu
+FROM statiskit/ubuntu
 
 RUN git clone http://github.com/StatisKit/FPD17
 RUN cd FPD17 && conda env create -f environment.yml
