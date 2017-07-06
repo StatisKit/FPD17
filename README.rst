@@ -8,11 +8,17 @@
 FPD17: Supplementary Material for Computational Studies 
 #######################################################
 
-This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing computational studies performed in the article *unknown title* written by:
+This repository contains supplementary material for reproducibiliy of computational studies performed in the article *unknown title* written by:
 
 * Pierre Fernique,
 * Jean Peyhardi,
 * Jean-Baptiste Durand.
+
+Look at it !
+============
+
+These computational studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
+Refers to `index.ipynb <index.ipynb>`_ notebook which references each computation studies available.
 
 Test it !
 =========
