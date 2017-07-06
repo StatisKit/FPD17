@@ -1,5 +1,5 @@
-FPD17: Supplementary material for article studies reproducibility
-#################################################################
+FPD17: Supplementary material
+#############################
 
 This repository contains **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_ for reproducing simulations and analyzes performed in the article *Multinomial Splitting Models for Multivariate Counts* written by:
 
