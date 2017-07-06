@@ -1,3 +1,10 @@
+.. image:: https://travis-ci.org/StatisKit/FPD17.svg?branch=master
+    :target: https://travis-ci.org/StatisKit/FPD17
+  
+ .. image:: https://ci.appveyor.com/api/projects/status/jbvyy4sko6bhorx2/branch/master
+    :target: https://ci.appveyor.com/api/projects/status/jbvyy4sko6bhorx2/branch/master
+
+
 FPD17: Supplementary Material
 #############################
 
