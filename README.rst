@@ -22,14 +22,13 @@ On your computer with **Docker**
 --------------------------------
 
 To reproduce the studies with **Docker** use this `image <https://hub.docker.com/r/statiskit/FPF17/tags>`_.
-After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following commands in a shell:
+After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following command in a shell:
 
 .. code-block:: console
 
     docker run -i -t -p 8888:8888 statiskit/FPD17:latest
-    jupyter notebook index.ipynb --ip='*' --port=8888 --no-browser
    
-You can then view the **Jupyter** notebooks by following this `link <http://localhost:8888/notebooks/index.ipynb>`_, or http://<DOCKER-MACHINE-IP>:8888/notebooks/index.ipynb if you are using a **Docker** Machine VM (see this `documentation <https://docs.docker.com/machine/>`_ for more informations).
+Then, follow the given instructions.
 
 Install it !
 ============
