@@ -10,6 +10,7 @@ services:
   - docker
   
 env:
+  - RECIPE=r-mglm
   - ENVIRONMENT=FPD17
     NOTEBOOK=index.ipynb
   - DOCKERFILE=FPD17

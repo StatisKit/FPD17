@@ -4,6 +4,7 @@ platform:
 
 environment:
   matrix:
+    - RECIPE: r-mglm
     - ENVIRONMENT: FPD17
       NOTEBOOK: index.ipynb
 
