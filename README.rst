@@ -31,7 +31,7 @@ Note that the **Binder** server might be outdated but can be updated by followin
 On your computer with **Docker**
 --------------------------------
 
-To reproduce the studies with **Docker** use this `image <https://hub.docker.com/r/statiskit/FPF17/tags>`_.
+To reproduce the studies with **Docker** use these `images <https://hub.docker.com/r/statiskit/FPF17/tags>`_.
 After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following command in a shell:
 
 .. code-block:: console
