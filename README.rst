@@ -15,7 +15,7 @@ This repository contains supplementary material for the reproducibiliy of comput
 * Jean-Baptiste Durand.
 
 These studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
-Refers to the `index.ipynb <index.ipynb>`_ notebook which presents and references each article study.
+Refers to the `index.ipynb <index.ipynb>`_ notebook which presents and references each study.
 
 Test it !
 =========
