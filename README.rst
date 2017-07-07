@@ -8,7 +8,7 @@
 FPD17: Supplementary Material for Computational Studies 
 #######################################################
 
-This repository contains supplementary material for reproducibiliy of computational studies performed in the article *unknown title* written by:
+This repository contains supplementary material for the reproducibiliy of computational studies performed in the article *unknown title* written by:
 
 * Pierre Fernique,
 * Jean Peyhardi,
@@ -17,8 +17,8 @@ This repository contains supplementary material for reproducibiliy of computatio
 Look at it !
 ============
 
-These computational studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
-Refers to `index.ipynb <index.ipynb>`_ notebook which references each computation studies available.
+These studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
+Refers to the `index.ipynb <index.ipynb>`_ notebook which presents and references each article study.
 
 Test it !
 =========
@@ -46,9 +46,9 @@ Then, follow the given instructions.
 Install it !
 ============
 
-You can also install on your computer all required packages to reproduce these studies.
+You can also install required packages on your computer to reproduce these studies.
 In order to ease the installation of these packages on multiple operating systems, the **Conda** `package and environment management system <https://conda.io/docs/>`_ is used.
-For more information refers to the **StatisKit** software suite documentation concerning prerequisites to the `installation <http://statiskit.readthedocs.io/en/latest/user/install_it.html>`_.
+For more information refers to the **StatisKit** software suite documentation concerning prerequisites to the `installation <http://statiskit.readthedocs.io/en/latest/user/install_it.html>`_ step.
 Then, to install the required packages, proceed as as follows:
 
 1. Clone this repository,
@@ -57,21 +57,21 @@ Then, to install the required packages, proceed as as follows:
    
      git clone https://github.com/StatisKit/FPD17
      
-2. Enter in the cloned repository,
+2. Enter the cloned repository,
 
    .. code:: console
    
      cd FPD17
      
-3. Install the **Conda** environment,
+3. Install the given **Conda** environment,
 
    .. code:: console
 
      conda env create -f environment.yml
   
-4. Activate the `FPD17` environment as precised in your terminal.
+4. Activate the **Conda** environment as precised in your terminal.
 
-5. Launch the **Jupyter** index notebook,
+5. Launch the **Jupyter** the `index.ipynb <index.ipynb>`_ notebook,
 
    .. code:: console
 
