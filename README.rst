@@ -20,7 +20,7 @@ Refers to the `index.ipynb <index.ipynb>`_ notebook which presents and reference
 Test it !
 =========
 
-Using **Docker** `images <http://docs.mybinder.org/>`_. or a **Binder** `server <https://docs.docker.com/>`_, we are able to provide ways to reproduce the article studies without installing the **StatisKit** software suite.
+Using **Docker** `images <https://docs.docker.com/>`_ and a **Binder** `server <http://docs.mybinder.org/>`_, we are able to provide ways to reproduce the article studies without installing the **StatisKit** software suite.
     
 Online with **Binder**
 ----------------------
