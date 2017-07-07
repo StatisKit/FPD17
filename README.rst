@@ -36,7 +36,7 @@ After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, y
 
 .. code-block:: console
 
-    docker run -i -t -p 8888:8888 statiskit/FPD17:latest
+    docker run -i -t -p 8888:8888 statiskit/fpd17:latest
    
 Then, follow the given instructions.
 
