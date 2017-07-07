@@ -5,6 +5,7 @@ platform:
 environment:
   matrix:
     - RECIPE: r-mglm
+    - RECIPE: r-bivpois
     - ENVIRONMENT: FPD17
       NOTEBOOK: misc/simulation.ipynb
     - ENVIRONMENT: FPD17
