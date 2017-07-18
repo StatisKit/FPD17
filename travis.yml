@@ -13,11 +13,11 @@ env:
   - RECIPE=r-mglm
   - RECIPE=r-bivpois
   - ENVIRONMENT=FPD17
-    NOTEBOOK=misc/simulation.ipynb
+    NOTEBOOK=simulation.ipynb
   - ENVIRONMENT=FPD17
-    NOTEBOOK=misc/comparison.ipynb
+    NOTEBOOK=comparison.ipynb
   - ENVIRONMENT=FPD17
-    NOTEBOOK=misc/application.ipynb
+    NOTEBOOK=application.ipynb
   - DOCKERFILE=fpd17
 
 matrix:
