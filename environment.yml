@@ -4,7 +4,7 @@ channels:
   - conda-forge
   - r
 dependencies:
-  - python 2.7*
+  - python=2.7
   - r-essentials
   - r-mglm
   - r-bivpois
