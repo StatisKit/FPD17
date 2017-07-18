@@ -24,5 +24,6 @@ RUN echo "echo \"#                                                              
 RUN echo "echo \"##############################################################################\"" >> $HOME/.bashrc
 
 RUN echo "source activate FPD17" >> $HOME/.bashrc
+RUN conda clean --all -y
 
 WORKDIR /home/main/FPD17
