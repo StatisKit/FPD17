@@ -25,7 +25,7 @@ Using **Docker** `images <https://docs.docker.com/>`_ and a **Binder** `server <
 Online with **Binder**
 ----------------------
 
-To reproduce the studies online, follow this `link <https://beta.mybinder.org/v2/gh/statiskit/fpd17/master?filepath=misc/index.ipynb>`_.
+To reproduce the studies online, use this `server <https://beta.mybinder.org/v2/gh/statiskit/fpd17/master?filepath=jupyter/index.ipynb>`_.
 
 On your computer with **Docker**
 --------------------------------
