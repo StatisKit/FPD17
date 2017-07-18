@@ -15,7 +15,7 @@ This repository contains supplementary material for the reproducibiliy of comput
 * Jean-Baptiste Durand.
 
 These studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
-Refers to the `index.ipynb <index.ipynb>`_ notebook which presents and references each study.
+Refers to the `index.ipynb <misc/index.ipynb>`_ notebook which presents and references each study.
 
 Test it !
 =========
@@ -67,11 +67,17 @@ Then, to install the required packages, proceed as as follows:
   
 4. Activate the **Conda** environment as precised in your terminal.
 
-5. Launch the **Jupyter** the `index.ipynb <index.ipynb>`_ notebook,
+5. Enter the :code:`misc` repository,
+
+   .. code:: console
+   
+     cd misc
+     
+6. Launch the **Jupyter** the `index.ipynb <misc/index.ipynb>`_ notebook,
 
    .. code:: console
 
      jupyter notebook index.ipynb
      
-6. Execute the `index.ipynb <index.ipynb>`_ notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
+7. Execute the `index.ipynb <misc/index.ipynb>`_ notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
 
