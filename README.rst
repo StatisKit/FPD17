@@ -5,8 +5,8 @@
    :target: https://ci.appveyor.com/api/projects/status/jbvyy4sko6bhorx2/branch/master
 
 
-FPD17: Supplementary Material for Computational Studies 
-#######################################################
+FPD17: Supplementary Material for Computational Studies for Splitting Models for Multivariate Count Data
+########################################################################################################
 
 This repository contains supplementary material for the reproducibiliy of computational studies performed in the article *unknown title* written by:
 
