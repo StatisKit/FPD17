@@ -4,14 +4,14 @@ platform:
 
 environment:
   matrix:
-    - RECIPE: r-mglm
-    - RECIPE: r-bivpois
-    - ENVIRONMENT: FPD17
-      NOTEBOOK: simulation.ipynb
-    - ENVIRONMENT: FPD17
-      NOTEBOOK: comparison.ipynb
-    - ENVIRONMENT: FPD17
-      NOTEBOOK: application.ipynb
+    - CONDA_RECIPE: r-mglm
+    - CONDA_RECIPE: r-bivpois
+    - CONDA_ENVIRONMENT: FPD17
+      JUPYTER_NOTEBOOK: simulation.ipynb
+    - CONDA_ENVIRONMENT: FPD17
+      JUPYTER_NOTEBOOK: comparison.ipynb
+    - CONDA_ENVIRONMENT: FPD17
+      JUPYTER_NOTEBOOK: application.ipynb
       
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git appveyor-ci
