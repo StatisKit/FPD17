@@ -15,7 +15,7 @@ This repository contains supplementary material for the reproducibiliy of comput
 * Jean-Baptiste Durand.
 
 These studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
-Refers to the `index.ipynb <jupyter/index.ipynb>`_ notebook which presents and references each study.
+Refers to the `index.ipynb <share/jupyter/index.ipynb>`_ notebook which presents and references each study.
 
 Test it !
 =========
@@ -25,7 +25,7 @@ Using **Docker** `images <https://docs.docker.com/>`_ and a **Binder** `server <
 Online with **Binder**
 ----------------------
 
-To reproduce the studies online, use this `server <https://beta.mybinder.org/v2/gh/statiskit/fpd17/master?filepath=jupyter/index.ipynb>`_.
+To reproduce the studies online, use this `server <https://beta.mybinder.org/v2/gh/statiskit/fpd17/master?filepath=share/jupyter/index.ipynb>`_.
 
 On your computer with **Docker**
 --------------------------------
@@ -67,17 +67,23 @@ Then, to install the required packages, proceed as as follows:
   
 4. Activate the **Conda** environment as precised in your terminal.
 
-5. Enter the :code:`jupyter` repository,
+5. Enter the :code:`share` repository,
+
+   .. code:: console
+   
+     cd share
+     
+6. Enter the :code:`jupyter` repository,
 
    .. code:: console
    
      cd jupyter
      
-6. Launch the **Jupyter** the `index.ipynb <jupyter/index.ipynb>`_ notebook,
+7. Launch the **Jupyter** the `index.ipynb <jupyter/index.ipynb>`_ notebook,
 
    .. code:: console
 
      jupyter notebook index.ipynb
      
-7. Execute the `index.ipynb <jupyter/index.ipynb>`_ notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
+7. Execute the `index.ipynb <share/jupyter/index.ipynb>`_ notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
 
