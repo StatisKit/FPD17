@@ -18,7 +18,7 @@ env:
     JUPYTER_NOTEBOOK=comparison.ipynb
   - CONDA_ENVIRONMENT=FPD17
     JUPYTER_NOTEBOOK=application.ipynb
-    TRAVIS_WAIT=true
+    TRAVIS_WAIT=30
   - DOCKERFILE=fpd17
 
 matrix:
