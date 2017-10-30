@@ -1,0 +1,34 @@
+package:
+  name: r-bpsc
+  version: 0.99.1
+
+source:
+  fn: BPSC_0.99.1.tar.gz
+  url: https://github.com/nghiavtr/BPSC/releases/download/v0.99.1/BPSC_0.99.1.tar.gz
+
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build:
+    - r-base
+    - r-statmod
+    - r-doparallel
+    - r-foreach
+  run:
+    - r-base
+    - r-statmod
+    - r-doparallel
+    - r-foreach
+test:
+  commands:
+    - $R -e "library('BPSC')"           # [not win]
+    - "\"%R%\" -e \"library('BPSC')\""  # [win]
+
+about:
+  home: https://github.com/nghiavtr/BPSC
+  license: GPL (>= 3)
+  summary: Beta-Poisson model for single-cell RNA-seq data analyses.

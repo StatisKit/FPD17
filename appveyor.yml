@@ -4,6 +4,12 @@ platform:
 
 environment:
   matrix:
+    - CONDA_RECIPE: r-statmod
+    - CONDA_RECIPE: r-codetools
+    - CONDA_RECIPE: r-iterators
+    - CONDA_RECIPE: r-doparallel
+    - CONDA_RECIPE: r-foreach
+    - CONDA_RECIPE: r-bpsc
     - CONDA_RECIPE: r-mglm
     - CONDA_RECIPE: r-bivpois
     - CONDA_ENVIRONMENT: FPD17

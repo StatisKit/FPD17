@@ -1,0 +1,34 @@
+package:
+  name: r-codetools
+  version: "0.2.15"
+
+source:
+  fn: codetools_0.2-15.tar.gz
+  url: https://cran.r-project.org/src/contrib/codetools_0.2-15.tar.gz
+  sha256: 4e0798ed79281a614f8cdd199e25f2c1bd8f35ecec902b03016544bd7795fa40
+
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+
+requirements:
+  build:
+    - r-base
+
+  run:
+    - r-base
+
+test:
+  commands:
+    - $R -e "library('codetools')"           # [not win]
+    - "\"%R%\" -e \"library('codetools')\""  # [win]
+
+about:
+  home: https://CRAN.R-project.org/package=codetools
+  license: GPL
+  summary: Code analysis tools for R.
+  license_family: GPL
+

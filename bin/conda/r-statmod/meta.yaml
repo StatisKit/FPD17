@@ -1,0 +1,37 @@
+package:
+  name: r-statmod
+  version: "1.4.30"
+
+source:
+  fn: statmod_1.4.30.tar.gz
+  url: https://cran.r-project.org/src/contrib/statmod_1.4.30.tar.gz
+  sha256: 9d2c1722a85f53623a9ee9f73d835119ae22ae2b8ec7b50d675401e314ea641f
+
+build:
+  number: 0
+  skip: true  # [win32]
+
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build:
+    - r-base
+  run:
+    - r-base
+
+test:
+  commands:
+    - $R -e "library('statmod')"  # [not win]
+    - "\"%R%\" -e \"library('statmod')\""  # [win]
+
+about:
+  home: https://CRAN.R-project.org/package=statmod
+  license: GPL-3
+  summary: A collection of algorithms and functions to aid statistical modeling. Includes growth
+    curve comparisons, limiting dilution analysis (aka ELDA), mixed linear models, heteroscedastic
+    regression, inverse-Gaussian probability calculations, Gauss quadrature and a secure
+    convergence algorithm for nonlinear models.  Includes advanced generalized linear
+    model functions that implement secure convergence, dispersion modeling and Tweedie
+    power-law families.
