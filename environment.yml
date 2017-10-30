@@ -1,7 +1,6 @@
 name: FPD17
 channels:
   - statiskit
-  - conda-forge
   - r
 dependencies:
   - python=2.7
