@@ -1,3 +1,8 @@
+branches:
+  except:
+  - doc
+  - win
+
 language: cpp
 
 os:
@@ -10,26 +15,29 @@ services:
   - docker
   
 env:
-  - CONDA_RECIPE=r-statmod
-  - CONDA_RECIPE=r-bpsc
-  - CONDA_RECIPE=r-mglm
-  - CONDA_RECIPE=r-bivpois
-  - CONDA_ENVIRONMENT=FPD17
-    JUPYTER_NOTEBOOK=simulation.ipynb
-  - CONDA_ENVIRONMENT=FPD17
-    JUPYTER_NOTEBOOK=comparison.ipynb
-  - CONDA_ENVIRONMENT=FPD17
-    JUPYTER_NOTEBOOK=application.ipynb
+  - CONDA_RECIPE=bin/conda/r-statmod
+  - CONDA_RECIPE=bin/conda/r-bpsc
+  - CONDA_RECIPE=bin/conda/r-mglm
+  - CONDA_RECIPE=bin/conda/r-bivpois
+  - CONDA_RECIPE=bin/conda/fpd18
+  - CONDA_PACKAGES=fpd18
+    JUPYTER_NOTEBOOK=share/jupyter/comparison.ipynb
+  - CONDA_PACKAGES=fpd18
+    JUPYTER_NOTEBOOK=share/jupyter/application.ipynb
     TRAVIS_WAIT=30
-  - DOCKERFILE=fpd17
+  - DOCKER_CONTEXT=bin/docker/linux-64
+    DOCKER_CONTAINER=fpd18
+    CONDA_VERSION=2
 
 matrix:
   exclude:
   - os: osx
-    env: DOCKERFILE=fpd17
+    env: DOCKER_CONTEXT=bin/docker/linux-64
+         DOCKER_CONTAINER=fpd18
+         CONDA_VERSION=2
     
 install:
-  - git clone https://github.com/StatisKit/travis-ci.git travis-ci
+  - git clone --depth=1 https://github.com/StatisKit/travis-ci.git travis-ci
   - cd travis-ci
   - source install.sh
 
@@ -52,7 +60,7 @@ deploy:
   skip_cleanup: true
   provider: script
   on:
-      branch: master
+      all_branches: true
   script: bash deploy_script.sh
 
 after_deploy:

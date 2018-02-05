@@ -32,7 +32,7 @@ build:
 requirements:
   build:
     - r-base
-
+    - libtoolchain
   run:
     - r-base
 

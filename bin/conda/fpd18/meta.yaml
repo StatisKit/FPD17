@@ -1,0 +1,33 @@
+package:
+    name: fpd18
+    version: "1.0.0"
+
+source:
+    path: ../../..
+  
+build:
+    number: 0
+                
+about:
+    home: http://statiskit.readthedocs.io/
+    license: Apache License 2.0
+
+requirements:
+    build:
+        - python
+        # - python-statiskit_core
+        - r
+        - r-bivpois
+        - r-mglm
+        - jupyter
+        - r-irkernel
+        - matplotlib
+    run:
+        - python
+        # - {{ pin_compatible('python-statiskit_core', exact=True) }}
+        - r
+        - {{ pin_compatible('r-bivpois', exact=True) }}
+        - {{ pin_compatible('r-mglm', exact=True) }}
+        - jupyter
+        - r-irkernel
+        - matplotlib

@@ -18,6 +18,7 @@ requirements:
     - r-statmod
     - r-doparallel
     - r-foreach
+    - libtoolchain
   run:
     - r-base
     - r-statmod
