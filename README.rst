@@ -10,7 +10,7 @@
 Material for the paper entitled "Splitting distributions for multivariate count data"
 =====================================================================================
 
-This repository contains supplementary material for the reproducibiliy of computational studies performed in the article "Splitting distributions for multivariate count data" written by:
+This repository contains supplementary material for the reproducibility of computational studies performed in the article "Splitting distributions for multivariate count data" written by:
 
 * Pierre Fernique,
 * Jean Peyhardi,
