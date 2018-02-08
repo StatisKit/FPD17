@@ -7,6 +7,10 @@
 .. image:: https://ci.appveyor.com/api/projects/status/bwc7elajp21arif0/branch/master
    :target: https://ci.appveyor.com/project/pfernique/fpd18/branch/master
 
+.. warning:: 
+
+   Currently down, will be restored the 2018/02/11
+   
 Material for the paper entitled "Splitting distributions for multivariate count data"
 =====================================================================================
 
