@@ -7,6 +7,9 @@
 .. image:: https://ci.appveyor.com/api/projects/status/bwc7elajp21arif0/branch/master
    :target: https://ci.appveyor.com/project/pfernique/fpd18/branch/master
 
+.. image:: https://mybinder.org/badge.svg
+   :target: https://mybinder.org/v2/gh/StatisKit/FPD18/master?filepath=share%2Fjupyter%2Findex.ipynb
+
 .. warning:: 
 
    Currently down, will be restored the 2018/02/11
@@ -52,9 +55,9 @@ Online with **Binder**
 
 .. warning::
 
-   Currently, **Binder** does not work with this repository due to timeouts.
+   Currently, **Binder** does not work with *R* kernel
    
-To reproduce the studies online, use this `server <https://beta.mybinder.org/v2/gh/statiskit/fpd18/master>`_.
+To reproduce the studies online, use this `server <https://mybinder.org/v2/gh/StatisKit/FPD18/master?filepath=share%2Fjupyter%2Findex.ipynb>`_.
 
 On your computer with **Docker**
 --------------------------------
