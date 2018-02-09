@@ -26,7 +26,6 @@ environment:
     - CONDA_PACKAGES: fpd18
       JUPYTER_NOTEBOOK:  share\jupyter\comparison_ZZ17.ipynb
       JUPYTER_KERNEL: ir
-    - ANACONDA_RELEASE: true
       
 install:
   - git clone --depth=1 https://github.com/StatisKit/appveyor-ci.git appveyor-ci
