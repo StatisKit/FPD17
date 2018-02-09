@@ -22,9 +22,10 @@ env:
   - CONDA_RECIPE=bin/conda/fpd18
   - CONDA_PACKAGES=fpd18
     JUPYTER_NOTEBOOK=share/jupyter/comparison_KN05.ipynb
+    JUPYTER_JERNEL=ir
   - CONDA_PACKAGES=fpd18
     JUPYTER_NOTEBOOK=share/jupyter/comparison_ZZ17.ipynb
-    TRAVIS_WAIT=30
+    JUPYTER_JERNEL=ir
   - DOCKER_CONTEXT=bin/docker/linux-64
     DOCKER_CONTAINER=fpd18
     CONDA_VERSION=2
