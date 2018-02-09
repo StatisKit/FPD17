@@ -14,8 +14,8 @@
 
    Currently down, will be restored the 2018/02/11
    
-Material for the paper entitled "Splitting distributions for multivariate count data"
-=====================================================================================
+Material for the paper entitled "Splitting models for multivariate count data"
+==============================================================================
 
 This repository contains supplementary material for the reproducibility of computational studies performed in the article "Splitting distributions for multivariate count data" written by:
 
@@ -23,7 +23,7 @@ This repository contains supplementary material for the reproducibility of compu
 * Jean Peyhardi,
 * Jean-Baptiste Durand.
 
-This `article <https://arxiv.org/abs/1802.02074>`_ has been submitted to the "arXiv" e-print service.
+This article has been pre-published in the `arXiv <https://arxiv.org/abs/1802.02074>`_ e-print service.
 Here is the the citation formated as the bibtex standard.
 
 .. code-block:: bibtex
