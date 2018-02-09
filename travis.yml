@@ -20,6 +20,9 @@ env:
   - CONDA_RECIPE=bin/conda/r-mglm
   - CONDA_RECIPE=bin/conda/r-bivpois
   - CONDA_RECIPE=bin/conda/fpd18
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/fpd18
+    CONDA_VERSION=3
   - CONDA_PACKAGES=fpd18
     JUPYTER_NOTEBOOK=share/jupyter/comparison_KN05.ipynb
     JUPYTER_JERNEL=ir
