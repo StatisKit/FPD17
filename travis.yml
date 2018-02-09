@@ -32,7 +32,6 @@ env:
   - DOCKER_CONTEXT=bin/docker/linux-64
     DOCKER_CONTAINER=fpd18
     CONDA_VERSION=2
-  - ANACONDA_RELEASE=true
   
 matrix:
   exclude:
