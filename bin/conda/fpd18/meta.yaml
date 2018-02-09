@@ -20,6 +20,7 @@ requirements:
         - r-bivpois
         - r-mglm
         - jupyter
+        - ipykernel
         - r-irkernel
         - matplotlib
     run:
@@ -29,5 +30,6 @@ requirements:
         - {{ pin_compatible('r-bivpois', exact=True) }}
         - {{ pin_compatible('r-mglm', exact=True) }}
         - jupyter
+        - ipykernel
         - r-irkernel
         - matplotlib
