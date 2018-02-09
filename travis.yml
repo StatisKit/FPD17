@@ -25,10 +25,10 @@ env:
     CONDA_VERSION=3
   - CONDA_PACKAGES=fpd18
     JUPYTER_NOTEBOOK=share/jupyter/comparison_KN05.ipynb
-    JUPYTER_JERNEL=ir
+    JUPYTER_KERNEL=ir
   - CONDA_PACKAGES=fpd18
     JUPYTER_NOTEBOOK=share/jupyter/comparison_ZZ17.ipynb
-    JUPYTER_JERNEL=ir
+    JUPYTER_KERNEL=ir
   - DOCKER_CONTEXT=bin/docker/linux-64
     DOCKER_CONTAINER=fpd18
     CONDA_VERSION=2
