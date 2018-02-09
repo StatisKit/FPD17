@@ -16,19 +16,20 @@ services:
   
 env:
   - CONDA_RECIPE=bin/conda/r-statmod
-  - CONDA_RECIPE=bin/conda/r-bpsc
+  # - CONDA_RECIPE=bin/conda/r-bpsc
   - CONDA_RECIPE=bin/conda/r-mglm
   - CONDA_RECIPE=bin/conda/r-bivpois
   - CONDA_RECIPE=bin/conda/fpd18
   - CONDA_PACKAGES=fpd18
-    JUPYTER_NOTEBOOK=share/jupyter/comparison.ipynb
+    JUPYTER_NOTEBOOK=share/jupyter/comparison_KN05.ipynb
   - CONDA_PACKAGES=fpd18
-    JUPYTER_NOTEBOOK=share/jupyter/application.ipynb
+    JUPYTER_NOTEBOOK=share/jupyter/comparison_ZZ17.ipynb
     TRAVIS_WAIT=30
   - DOCKER_CONTEXT=bin/docker/linux-64
     DOCKER_CONTAINER=fpd18
     CONDA_VERSION=2
-
+  - ANACONDA_RELEASE=true
+  
 matrix:
   exclude:
   - os: osx

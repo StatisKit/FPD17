@@ -20,22 +20,24 @@ This repository contains supplementary material for the reproducibility of compu
 * Jean Peyhardi,
 * Jean-Baptiste Durand.
 
-This article has been submitted to the "arXiv" e-print service.
-Here is the the citation formated as the bibtex standart.
+This `article <https://arxiv.org/abs/1802.02074>`_ has been submitted to the "arXiv" e-print service.
+Here is the the citation formated as the bibtex standard.
 
 .. code-block:: bibtex
 
-  @article{FP17,
-    author    = {},
-    title     = {Splitting distributions for multivariate count data},
-    journal   = {CoRR},
-    volume    = {},
-    year      = {2018},
-    url       = {},
-    timestamp = {},
-    biburl    = {,
-    bibsource = {}
-  }
+   @ARTICLE{2018arXiv180202074F,
+            author = {{Fernique}, P. and {Peyhardi}, J. and {Durand}, J.-B.},
+            title = "{Splitting models for multivariate count data}",
+            journal = {ArXiv e-prints},
+            archivePrefix = "arXiv",
+            eprint = {1802.02074},
+            primaryClass = "math.ST",
+            keywords = {Mathematics - Statistics Theory, Mathematics - Probability},
+            year = 2018,
+            month = feb,
+            adsurl = {http://adsabs.harvard.edu/abs/2018arXiv180202074F},
+            adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+   }
 
 These studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
 Refers to the `index.ipynb <share/jupyter/index.ipynb>`_ notebook which presents and references each study.
@@ -52,12 +54,7 @@ Online with **Binder**
 
    Currently, **Binder** does not work with this repository due to timeouts.
    
-To reproduce the studies online, use this `server <https://beta.mybinder.org/v2/gh/statiskit/fpd18/v1.0.0?filepath=share/jupyter/index.ipynb>`_.
-
-.. note::
-
-   This server corresponds to the one used for the article.
-   Most recent server can be runned using this `link <https://beta.mybinder.org/v2/gh/statiskit/fpd18/master?filepath=share/jupyter/index.ipynb>`_.
+To reproduce the studies online, use this `server <https://beta.mybinder.org/v2/gh/statiskit/fpd18/master>`_.
 
 On your computer with **Docker**
 --------------------------------
@@ -69,32 +66,15 @@ After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, y
 
   .. code-block:: console
 
-    docker run -i -t -p 8888:8888 statiskit/fpd18:v1.0.0-py2k
+    docker run -i -t -p 8888:8888 statiskit/fpd18:latest-py2k
    
 * For the *Python 3* version 
 
   .. code-block:: console
 
-    docker run -i -t -p 8888:8888 statiskit/fpd18:v1.0.0-py3k
+    docker run -i -t -p 8888:8888 statiskit/fpd18:latest-py3k
   
 Then, follow the given instructions.
-  
-.. note::
-
-    These images correspond to the ones used for the article.
-    Most recent images can be runned using these commands in a shell:
-
-    * For the *Python 2* version 
-
-      .. code-block:: console
-
-        docker run -i -t -p 8888:8888 statiskit/fpd18:latest-py2k
-   
-    * For the *Python 3* version 
-
-      .. code-block:: console
-
-        docker run -i -t -p 8888:8888 statiskit/fpd18:latest-py3k
     
 Install it !
 ============
@@ -113,18 +93,13 @@ Then, to install the required packages, proceed as as follows:
 
    .. code:: console
    
-     git clone --recursive https://github.com/StatisKit/FP17
+     git clone --recursive https://github.com/StatisKit/FPD18
      
 2. Create a **Conda** environment containing the meta-package :code:`fpd18`,
       
    .. code:: console
 
-       conda create -n fpd18 fpd18=1.0.0 python=2 -c statiskit -c defaults --override-channels
- 
-   .. note::
-
-     This meta-package corresponds to the one used for the article.
-     Most recent meta-package can be installed by replacing :code:`fpd18=1.0.0` by :code:`fpd18` in previous command lines
+       conda create -n fpd18 fpd18 python=2 -c statiskit -c r -c defaults --override-channels
      
 3. Activate the **Conda** environment as advised in your terminal.
 
@@ -132,7 +107,7 @@ Then, to install the required packages, proceed as as follows:
 
    .. code:: console
    
-     cd FP17
+     cd FPD18
      cd share
      cd jupyter
      
@@ -142,4 +117,4 @@ Then, to install the required packages, proceed as as follows:
 
      jupyter notebook index.ipynb
      
-6. Execute the `index.ipynb <share/jupyter/index.ipynb>`_ notebook to execute all examples or navigate among referenced notebooks to execute them separatly.
+6. Execute the `index.ipynb <share/jupyter/index.ipynb>`_ notebook to execute all examples or navigate among referenced notebooks to execute them separately.

@@ -12,17 +12,19 @@ platform:
 environment:
   matrix:
     - CONDA_RECIPE: bin\conda\r-statmod
-    - CONDA_RECIPE: bin\conda\r-codetools
-    - CONDA_RECIPE: bin\conda\r-iterators
-    - CONDA_RECIPE: bin\conda\r-doparallel
-    - CONDA_RECIPE: bin\conda\r-foreach
-    - CONDA_RECIPE: bin\conda\r-bpsc
+    # - CONDA_RECIPE: bin\conda\r-codetools
+    # - CONDA_RECIPE: bin\conda\r-iterators
+    # - CONDA_RECIPE: bin\conda\r-doparallel
+    # - CONDA_RECIPE: bin\conda\r-foreach
+    # - CONDA_RECIPE: bin\conda\r-bpsc
     - CONDA_RECIPE: bin\conda\r-mglm
     - CONDA_RECIPE: bin\conda\r-bivpois
-    - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK:  share\jupyter\comparison.ipynb
-    - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK:  share\jupyter\application.ipynb
+    - CONDA_RECIPE: bin\conda\fpd18
+    - CONDA_PACKAGES: fpd18
+      JUPYTER_NOTEBOOK:  share\jupyter\comparison_KN05.ipynb
+    - CONDA_PACKAGES: fpd18
+      JUPYTER_NOTEBOOK:  share\jupyter\comparison_ZZ17.ipynb
+    - ANACONDA_RELEASE: true
       
 install:
   - git clone --depth=1 https://github.com/StatisKit/appveyor-ci.git appveyor-ci
