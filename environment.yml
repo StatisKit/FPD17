@@ -1,5 +1,5 @@
 channels:
-  - statiskit
+  - statiskit/label/unstable
   - r
   - defaults
 dependencies:
