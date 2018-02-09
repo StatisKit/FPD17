@@ -11,7 +11,7 @@ platform:
 
 environment:
   matrix:
-    - CONDA_RECIPE: bin\conda\r-statmod
+    # - CONDA_RECIPE: bin\conda\r-statmod
     # - CONDA_RECIPE: bin\conda\r-codetools
     # - CONDA_RECIPE: bin\conda\r-iterators
     # - CONDA_RECIPE: bin\conda\r-doparallel
@@ -22,8 +22,10 @@ environment:
     - CONDA_RECIPE: bin\conda\fpd18
     - CONDA_PACKAGES: fpd18
       JUPYTER_NOTEBOOK:  share\jupyter\comparison_KN05.ipynb
+      JUPYTER_KERNEL: ir
     - CONDA_PACKAGES: fpd18
       JUPYTER_NOTEBOOK:  share\jupyter\comparison_ZZ17.ipynb
+      JUPYTER_KERNEL: ir
     - ANACONDA_RELEASE: true
       
 install:
