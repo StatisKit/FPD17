@@ -12,7 +12,7 @@
 
 .. warning:: 
 
-   Currently down, will be restored the 2018/02/11
+   Currently down, will be restored the 2018/02/13
    
 Material for the paper entitled "Splitting models for multivariate count data"
 ==============================================================================
