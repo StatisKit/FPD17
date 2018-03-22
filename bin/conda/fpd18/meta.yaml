@@ -15,7 +15,7 @@ about:
 requirements:
     build:
         - python
-        # - python-statiskit_core
+        - python-statiskit_core
         - r
         - r-bivpois
         - r-mglm
@@ -25,7 +25,7 @@ requirements:
         - matplotlib
     run:
         - python
-        # - {{ pin_compatible('python-statiskit_core', exact=True) }}
+        - {{ pin_compatible('python-statiskit_core', exact=True) }}
         - r
         - {{ pin_compatible('r-bivpois', exact=True) }}
         - {{ pin_compatible('r-mglm', exact=True) }}
