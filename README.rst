@@ -102,7 +102,7 @@ Then, to install the required packages, proceed as as follows:
       
    .. code:: console
 
-       conda create -n fpd18 fpd18 python=2 -c statiskit/label/unstable -c r -c defaults --override-channels
+       conda create -n fpd18 fpd18 python=2 -c statiskit/label/develop -c r -c defaults --override-channels
      
 3. Activate the **Conda** environment as advised in your terminal.
 
