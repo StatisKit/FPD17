@@ -15,23 +15,26 @@ services:
   - docker
   
 env:
-  - CONDA_RECIPE=bin/conda/r-statmod
-  # - CONDA_RECIPE=bin/conda/r-bpsc
-  - CONDA_RECIPE=bin/conda/r-mglm
-  - CONDA_RECIPE=bin/conda/r-bivpois
-  - CONDA_RECIPE=bin/conda/fpd18
-    CONDA_VERSION=2
-  - CONDA_RECIPE=bin/conda/fpd18
-    CONDA_VERSION=3
-  - CONDA_PACKAGES=fpd18
-    JUPYTER_NOTEBOOK=share/jupyter/comparison_KN05.ipynb
-    JUPYTER_KERNEL=ir
-  - CONDA_PACKAGES=fpd18
-    JUPYTER_NOTEBOOK=share/jupyter/comparison_ZZ17.ipynb
-    JUPYTER_KERNEL=ir
-  - DOCKER_CONTEXT=bin/docker/linux-64
-    DOCKER_CONTAINER=fpd18
-    CONDA_VERSION=2
+  global:
+    - PYTHON_VERSION=3.7
+  jobs:
+    - CONDA_RECIPE=bin/conda/r-statmod
+    # - CONDA_RECIPE=bin/conda/r-bpsc
+    - CONDA_RECIPE=bin/conda/r-mglm
+    - CONDA_RECIPE=bin/conda/r-bivpois
+    - CONDA_RECIPE=bin/conda/fpd18
+      CONDA_VERSION=2
+    - CONDA_RECIPE=bin/conda/fpd18
+      CONDA_VERSION=3
+    - CONDA_PACKAGES=fpd18
+      JUPYTER_NOTEBOOK=share/jupyter/comparison_KN05.ipynb
+      JUPYTER_KERNEL=ir
+    - CONDA_PACKAGES=fpd18
+      JUPYTER_NOTEBOOK=share/jupyter/comparison_ZZ17.ipynb
+      JUPYTER_KERNEL=ir
+    - DOCKER_CONTEXT=bin/docker/linux-64
+      DOCKER_CONTAINER=fpd18
+      CONDA_VERSION=2
   
 matrix:
   exclude:
