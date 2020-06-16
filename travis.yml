@@ -40,35 +40,38 @@ matrix:
          DOCKER_CONTAINER=fpd18
          CONDA_VERSION=2
     
-install:
-  - git clone --depth=1 https://github.com/StatisKit/travis-ci.git travis-ci
+before_install:
+  - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
-  - source install.sh
+  - ./before_install
+
+install:
+  - ./install
 
 before_script:
-  - source before_script.sh
+  - ./before_script
 
 script:
-  - source script.sh
+  - ./script
 
 after_success:
-  - source after_success.sh
+  - ./after_success
 
 after_failure:
-  - source after_failure.sh
+  - ./after_failure
 
 before_deploy:
-  - source before_deploy.sh
+  - ./before_deploy
 
 deploy:
   skip_cleanup: true
   provider: script
   on:
       all_branches: true
-  script: bash deploy_script.sh
+  script: ./deploy_script
 
 after_deploy:
-  - source after_deploy.sh
+  - ./after_deploy
 
 after_script:
-  - source after_script.sh
+  - ./after_script
