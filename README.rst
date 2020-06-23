@@ -45,40 +45,6 @@ Here is the the citation formated as the bibtex standard.
 These studies are formatted as pre-executed **Jupyter** `notebooks <https://jupyter.readthedocs.io/en/latest/index.html>`_.
 Refers to the `index.ipynb <share/jupyter/index.ipynb>`_ notebook which presents and references each study.
 
-Test it !
-=========
-
-Using **Docker** `images <https://docs.docker.com/>`_  and **Binder**  `servers <http://docs.mybinder.org/>`_ , we are able to provide ways to reproduce the article studies without installing the **StatisKit** software suite.
-    
-Online with **Binder**
-----------------------
-
-.. warning::
-
-   Currently, **Binder** does not work with *R* kernel
-   
-To reproduce the studies online, use this `server <https://mybinder.org/v2/gh/StatisKit/FPD18/master?filepath=share%2Fjupyter%2Findex.ipynb>`_.
-
-On your computer with **Docker**
---------------------------------
-
-To reproduce the studies with **Docker** use these `images <https://hub.docker.com/r/statiskit/fpd18/tags>`_.
-After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following commands in a shell:
-  
-* For the *Python 2* version 
-
-  .. code-block:: console
-
-    docker run -i -t -p 8888:8888 statiskit/fpd18:latest-py2k
-   
-* For the *Python 3* version 
-
-  .. code-block:: console
-
-    docker run -i -t -p 8888:8888 statiskit/fpd18:latest-py3k
-  
-Then, follow the given instructions.
-    
 Install it !
 ============
   
