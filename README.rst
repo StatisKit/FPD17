@@ -63,10 +63,14 @@ Then, to install the required packages, proceed as as follows:
       
    .. code:: console
 
-       conda create -n fpd18 fpd18 python=2 -c statiskit/label/develop -c r -c defaults --override-channels
+       conda create -n fpd18 fpd18 -c statiskit -c r -c defaults --override-channels
      
 3. Activate the **Conda** environment as advised in your terminal.
 
+   .. code:: console
+   
+     conda activate fpd18
+     
 4. Enter the directory containing **Jupyter** notebooks,
 
    .. code:: console
