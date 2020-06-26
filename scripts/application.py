@@ -136,6 +136,9 @@ We also considered the case where there is only one component.
 mixest.append(estimator(data, False))
 mixest = list(reversed(mixest))
 
+# TODO: check what is actually mixed. Sum distributions, splitting, or both (with different weights then)?
+# Or is it rather a mixture of splitting as it rather seems?
+
 """
 To select the best number of components, we used the BIC.
 """
