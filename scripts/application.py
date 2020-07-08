@@ -266,13 +266,33 @@ def probability(y, pi, r, p, delta):
     distribution 
     """
     d = len(y)
-    from numpy import gamma
+    from scipy.special import gamma
     s = y.sum() - delta
-    n = r + s - 1
-    pr = gamma(n+1) / gamma(n-s+1)
-    for i in range(d):
-        pr *= pi[i]**y[i] / gamma(y[i]+1)
-    pr *= (1-p)**r * p**s
+    if s >= 0:
+        n = r + s - 1
+        pr = gamma(n+1) / gamma(n-s+1)
+        for i in range(d):
+            pr = pr * pi[i]**y[i] / gamma(y[i]+1)
+        pr = pr * (1-p)**r * p**s
+        pr = pr[0]
+    else:
+        pr = 0.
+    return(pr)
+
+def probability2(y, pi, r, p, delta):
+    """
+    probability computation for a splitting multinomial - negative binomial 
+    distribution 
+    """
+    from scipy.stats import multinomial, nbinom
+    s = y.sum() - delta
+    if s >=0:
+        m = multinomial(y.sum(), pi) 
+        b = nbinom(r, p, delta) 
+        pr = m.pmf(y) * b.pmf(y.sum())
+        pr = pr[0]
+    else:
+        pr = 0.0
     return(pr)
 
 pi = np.zeros((len(np_rho), 3))
@@ -287,3 +307,85 @@ d = np.zeros((len(np_rho), 1), dtype=np.int64)
 
 for i in range(pi.shape[0]):
     r[i], p[i], d[i] = get_nb_parameters(dist.observations[i].sum)
+
+def event_to_array(e):
+    """
+    Conversion from event to numpy.array
+    """
+    return (np.array(eval(repr(e))))
+
+probs1 = {}
+
+for k in e_probs.keys():
+    probs1[eval(k)] = probability(np.array(eval(k)), pi[0,:], r[0], p[0], d[0])
+    
+np.array(list(probs1.values())).sum()
+
+probs1v = {}
+
+for k in e_probs.keys():
+    probs1v[eval(k)] = probability2(np.array(eval(k)), pi[0,:], r[0], p[0], d[0])
+    
+np.array(list(probs1v.values())).sum()
+
+full_probs1v = {}
+for v in itertools.product(*([range(12)] * 3)):
+    if np.sum(v) > 0:
+        full_probs1v[v] = probability2(np.array(v), pi[0,:], r[0], p[0], d[0])
+
+np.array(list(full_probs1v.values())).sum()    
+
+
+def mixture_probability(y, rho, pi, r, p, delta):
+    """
+    probability computation for a mixture of splitting multinomial 
+    - negative binomial distributions
+    """
+    k = len(rho) # number of mixture components
+    p = [probability(y, pi[i], r[i], p[i], delta[i]) for i in range(k)]
+    p = np.array(p)
+    w = np.array(rho)
+    return (np.dot(p, w))
+
+
+def mixture_probability2(y, rho, pi, r, p, delta):
+    """
+    probability computation for a mixture of splitting multinomial 
+    - negative binomial distributions
+    """
+    k = len(rho) # number of mixture components
+    p = [probability2(y, pi[i], r[i], p[i], delta[i]) for i in range(k)]
+    p = np.array(p)
+    w = np.array(rho)
+    return (np.dot(p, w))
+
+probs = {}
+
+for k in e_probs.keys():
+    probs[eval(k)] = mixture_probability(np.array(eval(k)), np_rho, pi, r, p, d)
+    
+np.array(list(probs.values())).sum()
+
+full_mixture_probs = {}
+for v in itertools.product(*([range(12)] * 3)):
+    if np.sum(v) > 0:
+        full_mixture_probs[v] = mixture_probability(np.array(v), np_rho, pi, r, p, d)
+
+np.array(list(full_mixture_probs.values())).sum()    
+
+
+probsv = {}
+
+for k in e_probs.keys():
+    probsv[eval(k)] = mixture_probability2(np.array(eval(k)), np_rho, pi, r, p, d)
+    
+np.array(list(probsv.values())).sum()
+
+full_mixture_probsv = {}
+for v in itertools.product(*([range(12)] * 3)):
+    if np.sum(v) > 0:
+        full_mixture_probsv[v] = mixture_probability2(np.array(v), np_rho, pi, r, p, d)
+
+np.array(list(full_mixture_probsv.values())).sum()    
+
+
