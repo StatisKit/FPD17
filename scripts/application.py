@@ -63,9 +63,7 @@ using the BIC.
 # DirichletMultinomialSingularDistribution
 # MultinomialSingularDistribution
 
-# multivariate hypergeometric cannot fit the data since the minimal value for
-# total counts is 1, so each parameter has to be 1 or less, which means 
-# that every value has to be 1 or less while the maximum is 11.
+# Can multivariate hypergeometric fit the data? Check admissible values for parameters and support.
 
 # generalized Dirichlet multinomial: check marginals and constraints on
 # parameters and data. See also:
@@ -173,7 +171,7 @@ The best number of components is $2$ with relatively similar representation
 mixest[1].estimated.pi
 
 """
-In component $1$, the best observation distribution is a multinomial splitting shifted negative binomiale .
+In component $1$, the best observation distribution is a multinomial splitting shifted negative binomial.
 """
 
 mixest[1].estimated.observations[0]
@@ -217,3 +215,75 @@ Note that if we consider only $1$ component, the best model is a Dirichlet multi
 """
 
 mixest[0].estimated
+
+print("Mean for component 0 sum: " + str(dist.observations[0].sum.mean))
+print("Mean for component 1 sum: " + str(dist.observations[1].sum.mean))
+
+# numpy conversion of proportions
+np_rho = np.array([dist.pi[i] for i in range(dist.pi.nb_rows)])
+
+# Marginal means in each component
+dist.observations[0].sum.mean * np_pi
+dist.observations[1].sum.mean * np_pi
+
+# Chi-square goodness of fit test
+
+e = data.events
+
+e_counts = {} # count occurrences of event
+e_probs = {} # associated probabilities
+e_counts_keys = []
+for i in range(len(e)):
+    k = repr(e[i])
+    if k in e_counts_keys:
+        e_counts[k] += 1
+    else:
+        e_counts_keys += [k]
+        e_counts[k] = 1
+        e_probs[k] = dist.probability(e[i])
+
+# Obviously probabilities are wrong
+print("Sum of probabilities: " + str(np.sum(list(e_probs.values()))))
+
+def get_nb_parameters(nb):
+    """
+    get parameters of a negative binomial distribution    
+    """
+    s = str(nb.probability)
+    i1 = s.find('NB')
+    i2 = s.find(',', i1)
+    r = float(s[i1+3:i2])
+    i3 = s.find(',', i2+1)
+    p = float(s[i2+1:i3])
+    i4 = s.find(')', i3+1)
+    d = int(s[i3+1:i4])
+    return (r, p, d)
+
+
+def probability(y, pi, r, p, delta):
+    """
+    probability computation for a splitting multinomial - negative binomial 
+    distribution 
+    """
+    d = len(y)
+    from numpy import gamma
+    s = y.sum() - delta
+    n = r + s - 1
+    pr = gamma(n+1) / gamma(n-s+1)
+    for i in range(d):
+        pr *= pi[i]**y[i] / gamma(y[i]+1)
+    pr *= (1-p)**r * p**s
+    return(pr)
+
+pi = np.zeros((len(np_rho), 3))
+
+for i in range(pi.shape[0]):
+    for j in range(pi.shape[1]):
+        pi[i,j] = dist.observations[i].singular.pi[j]
+
+r = np.zeros((len(np_rho), 1))
+p = np.zeros((len(np_rho), 1))
+d = np.zeros((len(np_rho), 1), dtype=np.int64)
+
+for i in range(pi.shape[0]):
+    r[i], p[i], d[i] = get_nb_parameters(dist.observations[i].sum)
