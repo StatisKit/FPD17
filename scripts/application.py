@@ -259,27 +259,7 @@ def get_nb_parameters(nb):
     d = int(s[i3+1:i4])
     return (r, p, d)
 
-
 def probability(y, pi, r, p, delta):
-    """
-    probability computation for a splitting multinomial - negative binomial 
-    distribution 
-    """
-    d = len(y)
-    from scipy.special import gamma
-    s = y.sum() - delta
-    if s >= 0:
-        n = r + s - 1
-        pr = gamma(n+1) / gamma(n-s+1)
-        for i in range(d):
-            pr = pr * pi[i]**y[i] / gamma(y[i]+1)
-        pr = pr * (1-p)**r * p**s
-        pr = pr[0]
-    else:
-        pr = 0.
-    return(pr)
-
-def probability2(y, pi, r, p, delta):
     """
     probability computation for a splitting multinomial - negative binomial 
     distribution 
@@ -321,21 +301,6 @@ for k in e_probs.keys():
     
 np.array(list(probs1.values())).sum()
 
-probs1v = {}
-
-for k in e_probs.keys():
-    probs1v[eval(k)] = probability2(np.array(eval(k)), pi[0,:], r[0], p[0], d[0])
-    
-np.array(list(probs1v.values())).sum()
-
-full_probs1v = {}
-for v in itertools.product(*([range(12)] * 3)):
-    if np.sum(v) > 0:
-        full_probs1v[v] = probability2(np.array(v), pi[0,:], r[0], p[0], d[0])
-
-np.array(list(full_probs1v.values())).sum()    
-
-
 def mixture_probability(y, rho, pi, r, p, delta):
     """
     probability computation for a mixture of splitting multinomial 
@@ -343,18 +308,6 @@ def mixture_probability(y, rho, pi, r, p, delta):
     """
     k = len(rho) # number of mixture components
     p = [probability(y, pi[i], r[i], p[i], delta[i]) for i in range(k)]
-    p = np.array(p)
-    w = np.array(rho)
-    return (np.dot(p, w))
-
-
-def mixture_probability2(y, rho, pi, r, p, delta):
-    """
-    probability computation for a mixture of splitting multinomial 
-    - negative binomial distributions
-    """
-    k = len(rho) # number of mixture components
-    p = [probability2(y, pi[i], r[i], p[i], delta[i]) for i in range(k)]
     p = np.array(p)
     w = np.array(rho)
     return (np.dot(p, w))
@@ -372,20 +325,5 @@ for v in itertools.product(*([range(12)] * 3)):
         full_mixture_probs[v] = mixture_probability(np.array(v), np_rho, pi, r, p, d)
 
 np.array(list(full_mixture_probs.values())).sum()    
-
-
-probsv = {}
-
-for k in e_probs.keys():
-    probsv[eval(k)] = mixture_probability2(np.array(eval(k)), np_rho, pi, r, p, d)
-    
-np.array(list(probsv.values())).sum()
-
-full_mixture_probsv = {}
-for v in itertools.product(*([range(12)] * 3)):
-    if np.sum(v) > 0:
-        full_mixture_probsv[v] = mixture_probability2(np.array(v), np_rho, pi, r, p, d)
-
-np.array(list(full_mixture_probsv.values())).sum()    
 
 
