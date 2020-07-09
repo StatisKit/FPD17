@@ -223,8 +223,8 @@ print("Mean for component 1 sum: " + str(dist.observations[1].sum.mean))
 np_rho = np.array([dist.pi[i] for i in range(dist.pi.nb_rows)])
 
 # Marginal means in each component
-dist.observations[0].sum.mean * np_pi
-dist.observations[1].sum.mean * np_pi
+dist.observations[0].sum.mean * np_rho
+dist.observations[1].sum.mean * np_rho
 
 # Chi-square goodness of fit test
 
@@ -317,7 +317,7 @@ probs = {}
 for k in e_probs.keys():
     probs[eval(k)] = mixture_probability(np.array(eval(k)), np_rho, pi, r, p, d)
     
-np.array(list(probs.values())).sum()
+cov_prob = np.array(list(probs.values())).sum()
 
 full_mixture_probs = {}
 for v in itertools.product(*([range(12)] * 3)):
@@ -325,5 +325,138 @@ for v in itertools.product(*([range(12)] * 3)):
         full_mixture_probs[v] = mixture_probability(np.array(v), np_rho, pi, r, p, d)
 
 np.array(list(full_mixture_probs.values())).sum()    
+
+# Complement to 1:
+comp = 1 - np.array(list(full_mixture_probs.values())).sum()
+
+# Find probable values not occurring in data
+[(k,v) for (k,v) in full_mixture_probs.items() if v > 0.005 and k not in probs.keys()]
+
+# Aggregate keys / cells
+m_keys = list(full_mixture_probs.keys())
+nb_m_keys = len(m_keys)
+# Mark a key when used in aggregation
+mark_m_keys = dict(zip(m_keys, [False]*nb_m_keys))
+current_m_k = 0
+e_counts_cp = dict([(eval(k), v) for k, v in e_counts.items()])
+total_counts = np.array(list(e_counts.values())).sum()
+e_counts_n = {}
+e_probs_n = {}
+for k in e_counts_cp.keys():
+    if not(mark_m_keys[k]) and ((e_counts_cp[k] < 6) or \
+        (total_counts * full_mixture_probs[k] < 5)):
+        current_count = e_counts_cp[k]
+        current_e_freq = total_counts * full_mixture_probs[k]
+        current_key = [k]
+        # enlarge cell
+        assert(not(mark_m_keys[k]))
+        mark_m_keys[k] = True
+        while current_m_k < nb_m_keys and (current_count < 6 or \
+            current_e_freq < 5):
+            # append free cells in m_keys            
+            mk = m_keys[current_m_k] # candidate
+            if not(mark_m_keys[mk]):
+                if mk in e_counts_cp:
+                    current_count += e_counts_cp[mk]
+                    current_e_freq += total_counts * full_mixture_probs[mk]
+                assert(not(mark_m_keys[mk]))    
+                mark_m_keys[mk] = True
+                # Append new key
+                current_key += [mk]
+            current_m_k += 1            
+        if current_m_k < nb_m_keys:
+            e_counts_n[str(current_key)] = current_count
+            e_probs_n[str(current_key)] = current_e_freq
+        else:
+            # unmark all event components
+            for v in current_key:
+                mark_m_keys[v] = False
+                e_counts_n.pop(v, None)
+                e_probs_n.pop(v, None)
+    elif not(mark_m_keys[k]):
+        # Mark key
+        assert(not(mark_m_keys[k]))
+        mark_m_keys[k] = True
+        e_counts_n[str([k])] = e_counts_cp[k]
+        e_probs_n[str([k])] = total_counts * full_mixture_probs[k]
+
+# group remaining cells
+
+current_key = []
+current_count = 0
+current_e_freq = 0.
+for k in e_counts_cp.keys():
+    if not(mark_m_keys[k]):
+        current_key += [k]
+        current_e_freq += total_counts * full_mixture_probs[k]
+        current_count += e_counts_cp[k]
+        mark_m_keys[k] = True
+if str(current_key) != '[]':
+    e_counts_n[str(current_key)] = current_count
+    e_probs_n[str(current_key)] = current_e_freq
+
+np.array(list(e_counts_n.values())).sum() # total counts
+
+# Check key unicity and Compute associated probabilities
+mark_m_keys_check = dict(zip(m_keys, [False]*nb_m_keys))
+se = [] # events involved in keys in e_counts_n
+
+for k in e_counts_n.keys():
+    e_probs_n[k] = e_probs_n[k] / total_counts
+    vals = eval(k)
+    for v in vals:
+        assert(not(mark_m_keys_check[v]))
+        mark_m_keys_check[v] = True
+        se += [v]
+
+assert(abs(np.array(list(e_probs_n.values())).sum() - cov_prob) < 1e-10) # total expected counts
+assert(len(set(e_counts_cp.keys()).difference(set(se)))==0)
+assert(np.array(list(e_counts_n.values())).sum() == total_counts)
+
+# Difference of event sets
+assert(str(e_counts_n.keys()) == str(e_probs_n.keys()))
+assert(len(set(se).difference(set(full_mixture_probs.keys()))) == 0)
+set(full_mixture_probs.keys()).difference(set(se))
+
+
+# Add complement to min prob cell
+m = 1.
+for (k, v) in e_probs_n.items():
+    if v < m:
+        min_k = k
+        m = v
+
+min_k_n = min_k[1:-1] + ", Rem]"
+
+v = e_counts_n.pop(min_k, None)
+e_counts_n[min_k_n] = v
+
+e_probs_n.pop(min_k, None)
+e_probs_n[min_k_n] = m + comp
+
+
+from scipy.stats import chisquare
+
+f_obs = [] # observed nb counts
+f_exp = [] # expected nb counts
+for k, v in e_counts_n.items():
+    f_obs += [v]
+    f_exp += [e_probs_n[k]]
+    
+f_obs = np.array(f_obs)    
+f_exp = np.array(f_exp) 
+total_counts = f_obs.sum()
+f_exp = total_counts * f_exp
+
+contribs = {}
+i = 0
+for k, v in e_counts_n.items():
+    contribs[k] = ((f_obs[i] - f_exp[i])**2 / f_exp[i], \
+                   np.sign((f_obs[i] - f_exp[i])), f_exp[i])
+    i += 1
+    
+ddof = dist.nb_parameters
+chisquare(f_obs, f_exp=f_exp, ddof=ddof)
+
 
 
