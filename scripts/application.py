@@ -222,10 +222,6 @@ print("Mean for component 1 sum: " + str(dist.observations[1].sum.mean))
 # numpy conversion of proportions
 np_rho = np.array([dist.pi[i] for i in range(dist.pi.nb_rows)])
 
-# Marginal means in each component
-dist.observations[0].sum.mean * np_rho
-dist.observations[1].sum.mean * np_rho
-
 # Chi-square goodness of fit test
 
 e = data.events
@@ -287,6 +283,11 @@ d = np.zeros((len(np_rho), 1), dtype=np.int64)
 
 for i in range(pi.shape[0]):
     r[i], p[i], d[i] = get_nb_parameters(dist.observations[i].sum)
+
+
+# Marginal means in each component
+dist.observations[0].sum.mean * pi[0,:]
+dist.observations[1].sum.mean * pi[1,:]
 
 def event_to_array(e):
     """
@@ -417,16 +418,37 @@ assert(np.array(list(e_counts_n.values())).sum() == total_counts)
 assert(str(e_counts_n.keys()) == str(e_probs_n.keys()))
 assert(len(set(se).difference(set(full_mixture_probs.keys()))) == 0)
 set(full_mixture_probs.keys()).difference(set(se))
+assert(sum(np.array(list(mark_m_keys.values())) == False) == \
+       len(set(full_mixture_probs.keys()).difference(set(se)) ))
 
 
-# Add complement to min prob cell
+    
+# Add remaining cells in full_mixture_probs to min prob cell
+rem_fmp = [k for k in full_mixture_probs.keys() if not(mark_m_keys[k])]
+rem_fmp_prob = np.array([full_mixture_probs[k] for k in rem_fmp]).sum()
+
 m = 1.
 for (k, v) in e_probs_n.items():
     if v < m:
         min_k = k
         m = v
 
-min_k_n = min_k[1:-1] + ", Rem]"
+min_k_n = str(eval(min_k) + rem_fmp)
+
+v = e_counts_n.pop(min_k, None)
+e_counts_n[min_k_n] = v
+
+e_probs_n.pop(min_k, None)
+e_probs_n[min_k_n] = m + rem_fmp_prob
+
+# Add complement wrt full_mixture_probs to min prob cell
+m = 1.
+for (k, v) in e_probs_n.items():
+    if v < m:
+        min_k = k
+        m = v
+
+min_k_n = min_k[0:-1] + ", Rem]"
 
 v = e_counts_n.pop(min_k, None)
 e_counts_n[min_k_n] = v
@@ -452,7 +474,7 @@ contribs = {}
 i = 0
 for k, v in e_counts_n.items():
     contribs[k] = ((f_obs[i] - f_exp[i])**2 / f_exp[i], \
-                   np.sign((f_obs[i] - f_exp[i])), f_exp[i])
+                   np.sign((f_obs[i] - f_exp[i])), f_obs[i], f_exp[i])
     i += 1
     
 ddof = dist.nb_parameters
