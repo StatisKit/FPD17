@@ -239,6 +239,7 @@ for i in range(len(e)):
         e_probs[k] = dist.probability(e[i])
 
 # Obviously probabilities are wrong
+# and so is the max log-likelihood, see below
 print("Sum of probabilities: " + str(np.sum(list(e_probs.values()))))
 
 def get_nb_parameters(nb):
@@ -250,7 +251,7 @@ def get_nb_parameters(nb):
     i2 = s.find(',', i1)
     r = float(s[i1+3:i2])
     i3 = s.find(',', i2+1)
-    p = float(s[i2+1:i3])
+    p = 1.-float(s[i2+1:i3]) # the parameterisation is p'=1-p in scipy
     i4 = s.find(')', i3+1)
     d = int(s[i3+1:i4])
     return (r, p, d)
@@ -480,6 +481,11 @@ for k, v in e_counts_n.items():
 ddof = dist.nb_parameters
 chisquare(f_obs, f_exp=f_exp, ddof=ddof)
 
+# p-value
+chi = np.array([c[0] for c in contribs.values()]).sum()
+from scipy.stats import chi2 
+pv = 1-chi2.cdf(chi, len(contribs) - 1 - ddof)
+
 # Check log-likelihood
 
 dl = dist.loglikelihood(data)
@@ -534,4 +540,7 @@ def my_icl(dist, data):
 
 e_probs_m, e_counts_m, mlm, BICm, ICLm = my_icl(mixest[1].estimated, data)
 
-ICLs= [(my_icl(mixest[k].estimated, data))[3] for k in range(1,11)]
+# Does not work since every distribution is not a multinomial splitting negative binomial
+# ICLs= [(my_icl(mixest[k].estimated, data))[3] for k in range(1,11)]
+
+# [mixest[i].estimated.observations[k] for i in range(1,10) for k in range(i+1)]
