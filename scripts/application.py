@@ -480,5 +480,58 @@ for k, v in e_counts_n.items():
 ddof = dist.nb_parameters
 chisquare(f_obs, f_exp=f_exp, ddof=ddof)
 
+# Check log-likelihood
+
+dl = dist.loglikelihood(data)
+
+ml = 0.
+
+for (k,v) in e_counts_cp.items():
+    ml += np.log(mixture_probability(np.array(k), np_rho, pi, r, p, d)) * v 
+    
+def my_icl(dist, data):
+    """
+    Alternative computation of ICL
+    """
+    np_rho = np.array([dist.pi[i] for i in range(dist.pi.nb_rows)])
+
+    pi = np.zeros((len(np_rho), 3))
+
+    for i in range(pi.shape[0]):
+        for j in range(pi.shape[1]):
+            pi[i,j] = dist.observations[i].singular.pi[j]
+    
+    r = np.zeros((len(np_rho), 1))
+    p = np.zeros((len(np_rho), 1))
+    d = np.zeros((len(np_rho), 1), dtype=np.int64)
+    
+    for i in range(pi.shape[0]):
+        r[i], p[i], d[i] = get_nb_parameters(dist.observations[i].sum)
+
+    
+    e_counts_cp = {} # count occurrences of event
+    e_probs = {} # associated probabilities
+    e_counts_keys = []
+    for i in range(len(e)):
+        k = repr(e[i])
+        vec = eval(k)
+        if k in e_counts_keys:
+            e_counts_cp[vec] += 1
+        else:
+            e_counts_keys += [k]
+            e_counts_cp[vec] = 1
+            e_probs[vec] = mixture_probability(np.array(vec), np_rho, pi, r, p, d)
+    ml = 0.
+    total_counts = np.array(list(e_counts_cp.values())).sum()
+    for (k,v) in e_counts_cp.items():
+        ml += np.log(mixture_probability(np.array(k), np_rho, pi, r, p, d)) * v 
+    BICm = ml - dist.nb_parameters * math.log(total_counts) / 2     
+    Um = dist.uncertainty(data)
+    ICLm = BICm - Um
+    
+    return(e_probs, e_counts_cp, ml, BICm, ICLm)
 
 
+e_probs_m, e_counts_m, mlm, BICm, ICLm = my_icl(mixest[1].estimated, data)
+
+ICLs= [(my_icl(mixest[k].estimated, data))[3] for k in range(1,11)]
