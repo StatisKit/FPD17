@@ -7,9 +7,6 @@
 .. image:: https://ci.appveyor.com/api/projects/status/bwc7elajp21arif0/branch/master
    :target: https://ci.appveyor.com/project/pfernique/fpd18/branch/master
 
-.. image:: https://mybinder.org/badge.svg
-   :target: https://mybinder.org/v2/gh/StatisKit/FPD18/master?filepath=share%2Fjupyter%2Findex.ipynb
-
 .. warning:: 
 
    Currently down, will be restored the 2018/02/13
