@@ -8,7 +8,6 @@ Created on Fri Jun 26 09:34:40 2020
 
 # An Application to Mango Patchiness Analysis
 
-import matplotlib
 from matplotlib import pyplot
 
 from statiskit import (linalg,
@@ -228,6 +227,7 @@ e = data.events
 
 e_counts = {} # count occurrences of event
 e_probs = {} # associated probabilities
+e_log_probs = {} # associated probabilities
 e_counts_keys = []
 for i in range(len(e)):
     k = repr(e[i])
@@ -237,10 +237,14 @@ for i in range(len(e)):
         e_counts_keys += [k]
         e_counts[k] = 1
         e_probs[k] = dist.probability(e[i])
+        e_log_probs[k] = dist.probability(e[i], log=True)
 
 # Obviously probabilities are wrong
 # and so is the max log-likelihood, see below
 print("Sum of probabilities: " + str(np.sum(list(e_probs.values()))))
+print("Now using exp log: " + str(np.sum(np.exp(list(e_log_probs.values())))))
+print("Diffs: " + str(max(abs(np.array(list(e_probs.values())) - \
+                              np.array(np.exp(list(e_log_probs.values())))))))
 
 def get_nb_parameters(nb):
     """
